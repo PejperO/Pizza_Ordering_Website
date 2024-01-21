@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Order Pizza</title>
+</head>
+<body>
+
+    <div class="container">
+        <div id="language-switch">
+            <img src="../../public/pl.png" alt="Change language to Polish">
+        </div>
+
+            <div id="user-info">
+                <img src="../../public/lokal2.png" alt="Local Image">
+                <div id="local-details">
+                    <h3>Pizza World</h3>
+                    <p><strong>Rating:</strong> 4.2</p>
+                    <p><strong>Cost of delivery:</strong> 15 zł</p>
+                </div>
+            </div>
+            <div id="restaurants-list">
+                <form action="#" method="post">
+                    <h2>Place Your Pizza Order</h2>
+
+                    <label for="pizza-type">Pizza Type:</label>
+                    <select id="pizza-type" name="pizza-type" required>
+                        <option value="margherita">Margherita</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="vegetarian">Vegetarian</option>
+                    </select>
+
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" required>
+
+                    <label for="name">First name and last name:</label>
+                    <input type="text" id="name" name="name" min="1" required>
+
+                    <label for="tel_number">Phone number:</label>
+                    <input type="number" id="tel_number" name="tel_number" min="1" required>
+
+                    <label for="delivery-address">Delivery Address:</label>
+                    <div class="address-input">
+                        <textarea id="delivery-address" name="delivery-address" rows="3" required></textarea>
+                        <button type="button" id="auto-fill">Add Data Automatically</button>
+                    </div>
+
+                    <div>
+                      <p id="total-cost"><strong>Total Cost: 45 zł</strong></p>
+                    </div>
+
+                    <input type="submit" value="Place Order">
+                </form>
+            </div>
+        </div>
+
+</body>
+</html>

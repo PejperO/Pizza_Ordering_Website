@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Database</title>
+</head>
+<body>
+
+    <div class="container">
+        <div id="language-switch">
+            <img src="../../public/eng.png" alt="Change language to English">
+        </div>
+
+        <div id="sort-search-options">
+            <label for="sort-column">Sortuj według kolumny:</label>
+            <select id="sort-column">
+                <option value="id">ID</option>
+                <option value="first-name">Imię</option>
+                <option value="last-name">Nazwisko</option>
+                <option value="email">Email</option>
+            </select>
+
+            <label for="sort-order">Kolejność sortowania:</label>
+            <select id="sort-order">
+                <option value="asc">Rosnąco</option>
+                <option value="desc">Malejąco</option>
+            </select>
+
+            <label for="search-input">Wyszukaj:</label>
+            <input type="text" id="search-input" placeholder="Wyszukaj...">
+        </div>
+
+        <h2>Baza Danych</h2>
+
+        <div id="database-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Email</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jan</td>
+                        <td>Kowalski</td>
+                        <td>kowalski123@gmail.com</td>
+                        <td>
+                            <button>Edytuj</button>
+                            <button>Usuń</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Anna</td>
+                        <td>Wesołowska</td>
+                        <td>ania.wes@gmail.com</td>
+                        <td>
+                            <button>Edytuj</button>
+                            <button>Usuń</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

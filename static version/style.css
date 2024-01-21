@@ -1,0 +1,402 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #ce5a41, #fed97e, #a35604);
+    background-attachment: fixed;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+#language-switch {
+    float: right;
+    margin: 10px;
+}
+
+#language-switch img {
+    width: 60px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#user-info {
+    width: 40%;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(255, 200, 200, 0.6);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#restaurants-list {
+    width: 60%;
+    float: right;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+header {
+    background: #00bfff;
+    padding: 1em 0;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: white;
+}
+
+.restaurant {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.restaurant img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.restaurant-info {
+    flex-grow: 1;
+}
+
+.restaurant-info h3 {
+    margin-top: 0;
+}
+
+#pizza-image {
+    width: 50%;
+    float: left;
+}
+
+#login-form {
+    width: 50%;
+    float: center;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+#login-form h2 {
+    text-align: center;
+    color: #333;
+}
+
+#user-info h2,
+#restaurants-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#database-content {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button-fail {
+    background-color: #af4c4c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}#database-content {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#database-content {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#local-info {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(255, 200, 200, 0.6);
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+#local-info img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+#local-details {
+    margin-top: 20px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+label {
+    margin-top: 10px;
+}
+
+select,
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#delivery-address {
+    height: 80px;
+}
+
+#delivery-address-fail {
+    height: 80px;
+    color: red;
+}
+
+.address-input {
+    position: relative;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#auto-fill {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#auto-fill:hover {
+    background-color: #45a049;
+}
+
+#total-cost {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#order-form label {
+    margin-top: 10px;
+}
+
+#order-form{
+    text-align: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+#admin-panel {
+    width: 90%;
+    float: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(200, 200, 255, 0.6);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#admin-panel h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#admin-panel ul {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#admin-panel li {
+    margin-bottom: 10px;
+}
+
+#admin-panel a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#admin-panel a:hover {
+    color: #45a049;
+}
+
+
+#sort-search-options {
+    float: right;
+    margin: 20px;
+}
+
+#sort-search-options label,
+#sort-search-options select,
+#sort-search-options input {
+    margin-right: 10px;
+}#sort-search-options {
+    float: right;
+    margin: 20px;
+}
+
+#sort-search-options label,
+#sort-search-options select,
+#sort-search-options input {
+    margin-right: 10px;
+}
