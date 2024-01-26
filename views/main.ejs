@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Strona Główna</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <div id="user-info">
+        <h2>Informacje o użytkowniku</h2>
+        <p><strong>Imię:</strong></p>
+        <p>Jan Kowalski</p>
+        <p><strong>Ulica:</strong></p>
+        <p>Koszyklowa 6/9</p>
+        <p>00-669 Warszawa</p>
+        <p><strong>Ostatnie zamówienie:</strong></p>
+        <!-- dodac dynamiczne dane -->
+    </div>
+
+    <div id="restaurants-list">
+        <h2>Lista Restauracji</h2>
+
+        <% for (let i = 0; i < restaurants.length; i++) { %>
+            <div class="restaurant">
+                <img src="/images/<%= restaurants[i].Image %>" alt="Local Image">
+
+                    <div class="restaurant-info">
+                        <a href="/order/<%= restaurants[i].ID %>">
+                        <h3><%= restaurants[i].Name %></h3>
+                        </a>
+                        <p><strong>Ocena:</strong> <%= restaurants[i].Rate %></p>
+                        <p><strong>Adres:</strong> <%= restaurants[i].Adres %></p>
+                        <p><strong>Koszt dostawy:</strong> <%= restaurants[i].Delivery %> zł</p>
+                    </div>
+
+            </div>
+        <% } %>
+
+    </div>
+
+    <div id="admin-panel">
+        <h2>Panel Administratora</h2>
+        <ul>
+            <a href="/database">Baza danych</a>
+        </ul>
+    </div>
+
+</div>
+</body>
+</html>
