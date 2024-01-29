@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Zamówienie</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <div id="user-info">
+        <img src="/images/<%= restaurant.Image %>" alt="Local Image" style="width: 200px; height: auto; margin-right: 20px; border-radius: 10px;">
+        <div id="local-details">
+            <h3><%= restaurant.Name %></h3>
+            <p><strong>Ocena:</strong> <%= restaurant.Rate %></p>
+            <p><strong>Adres:</strong> <%= restaurant.Adres %></p>
+            <p><strong>Koszt dostawy:</strong> <%= restaurant.Delivery %> zł</p>
+        </div>
+    </div>
+
+    <div id="restaurants-list">
+        <% const deliveryCost = JSON.stringify(restaurant.Delivery); %>
+
+        <input type="hidden" name="deliveryCost" value="<%= deliveryCost %>">
+
+
+        <form action="/order_final/<%= restaurant.ID %>" method="post" id="order-form">
+            <h2>Złóż zamówienie na pizzę</h2>
+
+            <select id="pizza-type" name="pizza-type" required>
+                <% for (let i = 0; i < pizzas.length; i++) { %>
+                    <% const pizza = pizzas[i]; %>
+                    <option value="<%= pizza.ID %>"><%= pizza.Name %> - <%= pizza.Price %> zł</option>
+                <% } %>
+            </select>
+
+            <label for="quantity"><strong>Ilość:</strong></label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+
+            <label for="name"><strong>Imię i Nazwisko:</strong></label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="tel_number"><strong>Numer telefonu:</strong></label>
+            <input type="tel" id="tel_number" name="tel_number" required>
+
+            <label for="delivery-address"><strong>Adres dostawy:</strong></label>
+            <textarea id="delivery-address" name="delivery_address" rows="3" required></textarea>
+
+            <div>
+                <!-- <p id="total-cost"><strong>Całkowity koszt: 0 zł</strong></p> -->
+            </div>
+
+            <input type="submit" value="Złóż Zamówienie" onclick="calculateTotalCost(<%= restaurant.Delivery %>, <%= JSON.stringify(restaurant) %>)">
+
+        </form>
+        <script src="/js/order.js"></script>
+    </div>
+</div>
+
+</body>
+</html>

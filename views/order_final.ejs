@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Podsumowanie Zamówienia</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+    <div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <div id="order-summary">
+        <h2>Podsumowanie Zamówienia</h2>
+
+        <div id="user-info">
+            <img src="/images/<%= restaurant.Image %>" alt="Local Image" style="width: 200px; height: auto; margin-right: 20px; border-radius: 10px;">
+            <div id="local-details">
+                <h3><%= restaurant.Name %></h3>
+                <p><strong>Ocena:</strong> <%= restaurant.Rate %></p>
+                <p><strong>Adres:</strong> <%= restaurant.Adres %></p>
+                <p><strong>Koszt dostawy:</strong> <%= restaurant.Delivery %> zł</p>
+            </div>
+        </div>
+
+        <div id="restaurants-list">
+            <h3>Szczegóły Zamówienia</h3>
+            <p><strong>Rodzaj pizzy:</strong> <%= order.pizza.Name %></p>
+            <p><strong>Cena pizzy:</strong> <%= order.pizza.Price %> zł</p>
+            <p><strong>Ilość:</strong> <%= order.quantity %></p>
+            <p><strong>Imię i Nazwisko:</strong> <%= order.name %></p>
+            <p><strong>Adres:</strong> <%= order.deliveryAddress %></p>
+            <p id="total-cost"><strong>Całkowity koszt: <%= order.pizza.Price * order.quantity + restaurant.Delivery %> zł</strong></p>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

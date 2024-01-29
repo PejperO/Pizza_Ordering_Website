@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Edytuj zamówienie</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+
+    <div id="edit-form">
+        <h2>Edytuj zamówienie</h2>
+        <form action="/editOrder/<%= order.ID %>" method="post">
+            <label for="date">Data:</label>
+            <input type="text" id="date" name="date" value="<%= order.Date %>" required>
+
+            <label for="price">Cena:</label>
+            <input type="text" id="price" name="price" value="<%= order.Price %>" required>
+
+            <label for="quantity">Ilość pizzy:</label>
+            <input type="text" id="quantity" name="quantity" value="<%= order.quantity %>" required>
+
+            <label for="pizza">Pizza:</label>
+            <input type="text" id="pizza" name="pizza" value="<%= order.Pizza_Name %>" required>
+
+            <label for="restaurant">Restauracja:</label>
+            <input type="text" id="restaurant" name="restaurant" value="<%= order.Restaurant_Name %>" required>
+
+            <input type="submit" value="Zapisz">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
