@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Edytuj bazę danych</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+
+    <div id="edit-form">
+        <h2>Edytuj bazę danych</h2>
+        <form action="/editUser/<%= user.ID %>" method="post">
+            <label for="first-name">Imię:</label>
+            <input type="text" id="first-name" name="firstName" value="<%= user.Name %>" required>
+
+            <label for="last-name">Nazwisko:</label>
+            <input type="text" id="last-name" name="lastName" value="<%= user.Last_Name %>" required>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="<%= user.Login %>" required>
+
+            <label for="street">Adres:</label>
+            <input type="text" id="street" name="street" value="<%= user.Address %>" required>
+
+            <input type="submit" value="Zapisz">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

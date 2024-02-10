@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Dane użytkownika</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+
+    <h2>Dane użytkownika</h2>
+
+    <div id="user-info">
+        <h3>Dane użytkownika</h3>
+        <p><strong>ID:</strong> <%= user.ID %></p>
+        <p><strong>Imie:</strong> <%= user.Name %></p>
+        <p><strong>Nazwisko:</strong> <%= user.Last_Name %></p>
+        <p><strong>Nr. Telefonu:</strong> <%= user.Phone_number %></p>
+        <p><strong>Adres:</strong> <%= user.Address %></p>
+        <p><strong>Email:</strong> <%= user.Login %></p>
+    </div>
+
+    <div id="user-orders">
+        <% if (userOrders.length > 0) { %>
+            <table>
+                <thead>
+                <tr>
+                    <th>ID Zamowienia</th>
+                    <th>Data</th>
+                    <th>Cena</th>
+                    <th>Ilość pizzy</th>
+                    <th>Pizza</th>
+                    <th>Restauracja</th>
+                    <th>Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for (let i = 0; i < userOrders.length; i++) { %>
+                    <tr>
+                        <td><%= userOrders[i].ID %></td>
+                        <td><%= userOrders[i].Date %></td>
+                        <td><%= userOrders[i].Price %></td>
+                        <td><%= userOrders[i].quantity %></td>
+                        <td><%= userOrders[i].Pizza_ID %></td>
+                        <td><%= userOrders[i].Pizza_ID %></td>
+                        <td>
+                            <a href="/editOrder/<%= userOrders[i].ID %>">Edytuj</a>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>Nie znaleziono zamówień dla tego użytkownika</p>
+        <% } %>
+    </div>
+
+</div>
+
+</body>
+</html>

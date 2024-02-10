@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Baza danych</title>
+</head>
+<body>
+
+<div class="container">
+    <div id="language-switch">
+        <a href="main_ang.html"> <!-- Zmiana -->
+            <img src="/images/ang.png" alt="Change language to English">
+        </a>
+    </div>
+
+    <div id="sort-search-options">
+        <form id="search-form">
+            <label for="sort-column">Sortuj według kolumny:</label>
+            <select id="sort-column" name="sortColumn">
+                <option value="ID">ID</option>
+                <option value="Name">Imię</option>
+                <option value="Last_Name">Nazwisko</option>
+                <option value="Phone_number">Nr. Telefonu</option>
+                <option value="Address">Adres</option>
+                <option value="Login">Email</option>
+            </select>
+
+            <label for="sort-order">Kolejność sortowania:</label>
+            <select id="sort-order" name="sortOrder">
+                <option value="asc">Rosnąco</option>
+                <option value="desc">Malejąco</option>
+            </select>
+
+            <label for="search-input">Wyszukaj:</label>
+            <input type="text" id="search-input" name="searchInput" placeholder="Wyszukaj...">
+
+            <button type="submit">Szukaj</button>
+        </form>
+    </div>
+
+    <h2>Baza Danych</h2>
+
+    <div id="database-content">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Nr. Telefonu</th>
+                <th>Adres</th>
+                <th>Email</th>
+                <th>Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let i = 0; i < users.length; i++) { %>
+                <tr>
+                    <td><%= users[i].ID %></td>
+                    <td><%= users[i].Name %></td>
+                    <td><%= users[i].Last_Name %></td>
+                    <td><%= users[i].Phone_number %></td>
+                    <td><%= users[i].Address %></td>
+                    <td><%= users[i].Login %></td>
+                    <td>
+                        <a href="/detailsUser/<%= users[i].ID %>">
+                            <button>Dokładne Dane</button>
+                        </a>
+                        <a href="/editUser/<%= users[i].ID %>">
+                            <button>Edytuj</button>
+                        </a>
+                        <form method="POST" action="<%= deleteEndpoint + users[i].ID %>?_method=DELETE">
+                            <button type="submit">Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.getElementById('search-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const searchParams = new URLSearchParams(formData);
+        const searchUrl = `/database?${searchParams.toString()}`;
+        window.location.href = searchUrl;
+    });
+</script>
+
+</body>
+</html>
