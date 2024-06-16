@@ -1,13 +1,38 @@
 const express = require('express');
 const mysql = require('mysql');
+const i18n = require('i18n');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const bcrypt = require('bcryptjs');
 const app = express();
 const port = 3000;
 const path = require('path');
-const url = require('url');
-
 const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
+i18n.configure({
+  locales: ['pl', 'en'],
+  directory: path.join(__dirname, 'locales'),
+  defaultLocale: 'pl',
+  cookie: 'locale'
+});
+
+app.use(i18n.init);
+app.use(cookieParser());
+
+app.use((req, res, next) => {
+  const currentLocale = req.cookies.locale || req.query.lang || 'pl';
+  res.setLocale(currentLocale);
+  next();
+});
+
+app.use(cookieParser());
+
+app.get('/change-language/:lang', (req, res) => {
+  const { lang } = req.params;
+  res.cookie('locale', lang, { maxAge: 900000, httpOnly: true });
+  res.redirect('back');
+});
 
 const pool = mysql.createPool({
   host: 'localhost',
@@ -22,10 +47,18 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 
+app.use(session({
+  secret: 'secret-key',
+  resave: false,
+  saveUninitialized: true,
+}));
 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
 
 app.get('/', (req, res) => {
   pool.query('SELECT * FROM Restaurant', (error, results) => {
@@ -35,7 +68,7 @@ app.get('/', (req, res) => {
 
     const restaurantsWithImages = results.map(restaurant => ({
       ...restaurant,
-      image: `/images/lokal${restaurant.ID}.png`, // Zakładam, że ID restauracji jest unikalne
+      image: `/images/lokal${restaurant.ID}.png`,
     }));
 
     res.render('main', { restaurants: restaurantsWithImages });
@@ -274,6 +307,68 @@ app.post('/order_final/:restaurantId', (req, res) => {
     });
   });
 });
+});
+
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+app.post('/register', (req, res) => {
+  const { firstName, lastName, email, password, phoneNumber, address } = req.body;
+  const hashedPassword = bcrypt.hashSync(password, 10);
+
+  pool.query(
+    'INSERT INTO User (Name, Last_Name, Phone_number, Address, Login, Password, Is_Admin, Is_Guest) VALUES (?, ?, ?, ?, ?, ?, 0, 0)',
+    [firstName, lastName, phoneNumber, address, email, hashedPassword],
+    (error, results) => {
+      if (error) {
+        console.error(error);
+        return res.render('register', { error: 'Rejestracja nie powiodła się. Spróbuj ponownie.' });
+      }
+
+      res.redirect('/login');
+    }
+  );
+});
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  pool.query('SELECT * FROM User WHERE Login = ?', [email], (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.render('login', { error: 'Błąd serwera. Spróbuj ponownie.' });
+    }
+
+    if (results.length > 0) {
+      const user = results[0];
+
+      bcrypt.compare(password, user.Password, (err, isMatch) => {
+        if (err) {
+          console.error(err);
+          return res.render('login', { error: 'Błąd serwera. Spróbuj ponownie.' });
+        }
+
+        if (isMatch) {
+          req.session.user = user;
+          return res.redirect('/');
+        } else {
+          return res.render('login', { error: 'Nieprawidłowy login lub hasło.' });
+        }
+      });
+    } else {
+      return res.render('login', { error: 'Nieprawidłowy login lub hasło.' });
+    }
+  });
+});
+
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
 });
 
 app.listen(port, () => {
