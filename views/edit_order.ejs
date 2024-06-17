@@ -4,36 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Edytuj zamówienie</title>
+    <title><%= __('editOrderTitle') %></title>
 </head>
 <body>
 
 <div class="container">
-    <div id="language-switch">
-        <a href="main_ang.html"> <!-- Zmiana -->
-            <img src="/images/ang.png" alt="Change language to English">
-        </a>
-    </div>
+  <div id="language-switch">
+      <a href="?lang=pl"><img src="/images/pl.png" alt="Zmień język na polski"></a>
+      <a href="?lang=en"><img src="/images/en.png" alt="Change language to English"></a>
+  </div>
 
     <div id="edit-form">
-        <h2>Edytuj zamówienie</h2>
+        <h2><%= __('editOrderTitle') %></h2>
         <form action="/editOrder/<%= order.ID %>" method="post">
-            <label for="date">Data:</label>
+            <label for="date"><%= __('dateLabel') %>:</label>
             <input type="text" id="date" name="date" value="<%= order.Date %>" required>
 
-            <label for="price">Cena:</label>
+            <label for="price"><%= __('priceLabel') %>:</label>
             <input type="text" id="price" name="price" value="<%= order.Price %>" required>
 
-            <label for="quantity">Ilość pizzy:</label>
+            <label for="quantity"><%= __('quantityLabel') %> <%= __('pizzaLabel') %>:</label>
             <input type="text" id="quantity" name="quantity" value="<%= order.quantity %>" required>
 
-            <label for="pizza">Pizza:</label>
+            <label for="pizza"><%= __('pizzaLabel') %>:</label>
             <input type="text" id="pizza" name="pizza" value="<%= order.Pizza_Name %>" required>
 
-            <label for="restaurant">Restauracja:</label>
+            <label for="restaurant"><%= __('restaurantLabel') %>:</label>
             <input type="text" id="restaurant" name="restaurant" value="<%= order.Restaurant_Name %>" required>
 
-            <input type="submit" value="Zapisz">
+            <input type="submit" value="<%= __('saveButton') %>">
         </form>
     </div>
 </div>

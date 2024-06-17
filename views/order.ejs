@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Zamówienie</title>
+    <title><%= __('orderTitle') %></title>
 </head>
 <body>
 
 <div class="container">
-    <div id="language-switch">
-        <a href="main_ang.html"> <!-- Zmiana -->
-            <img src="/images/ang.png" alt="Change language to English">
-        </a>
-    </div>
+  <div id="language-switch">
+      <a href="?lang=pl"><img src="/images/pl.png" alt="Zmień język na polski"></a>
+      <a href="?lang=en"><img src="/images/en.png" alt="Change language to English"></a>
+  </div>
     <div>
         <br>
         <br>
@@ -25,9 +24,9 @@
         <img src="/images/<%= restaurant.Image %>" alt="Local Image" style="width: 200px; height: auto; margin-right: 20px; border-radius: 10px;">
         <div id="local-details">
             <h3><%= restaurant.Name %></h3>
-            <p><strong>Ocena:</strong> <%= restaurant.Rate %></p>
-            <p><strong>Adres:</strong> <%= restaurant.Adres %></p>
-            <p><strong>Koszt dostawy:</strong> <%= restaurant.Delivery %> zł</p>
+            <p><strong><%= __('ratingLabel') %>:</strong> <%= restaurant.Rate %></p>
+            <p><strong><%= __('addressLabel') %>:</strong> <%= restaurant.Adres %></p>
+            <p><strong><%= __('deliveryCostLabel') %>:</strong> <%= restaurant.Delivery %> zł</p>
         </div>
     </div>
 
@@ -36,9 +35,8 @@
 
         <input type="hidden" name="deliveryCost" value="<%= deliveryCost %>">
 
-
         <form action="/order_final/<%= restaurant.ID %>" method="post" id="order-form">
-            <h2>Złóż zamówienie na pizzę</h2>
+            <h2><%= __('placeOrderHeader') %></h2>
 
             <select id="pizza-type" name="pizza-type" required>
                 <% for (let i = 0; i < pizzas.length; i++) { %>
@@ -47,23 +45,23 @@
                 <% } %>
             </select>
 
-            <label for="quantity"><strong>Ilość:</strong></label>
+            <label for="quantity"><strong><%= __('quantityLabel') %>:</strong></label>
             <input type="number" id="quantity" name="quantity" min="1" required>
 
-            <label for="name"><strong>Imię i Nazwisko:</strong></label>
+            <label for="name"><strong><%= __('fullNameLabel') %>:</strong></label>
             <input type="text" id="name" name="name" required>
 
-            <label for="tel_number"><strong>Numer telefonu:</strong></label>
+            <label for="tel_number"><strong><%= __('phoneNumberLabel') %>:</strong></label>
             <input type="tel" id="tel_number" name="tel_number" required>
 
-            <label for="delivery-address"><strong>Adres dostawy:</strong></label>
+            <label for="delivery-address"><strong><%= __('deliveryAddressLabel') %>:</strong></label>
             <textarea id="delivery-address" name="delivery_address" rows="3" required></textarea>
 
             <div>
-                <!-- <p id="total-cost"><strong>Całkowity koszt: 0 zł</strong></p> -->
+                <!-- <p id="total-cost"><strong><%= __('totalCostLabel') %>: 0 zł</strong></p> -->
             </div>
 
-            <input type="submit" value="Złóż Zamówienie" onclick="calculateTotalCost(<%= restaurant.Delivery %>, <%= JSON.stringify(restaurant) %>)">
+            <input type="submit" value="<%= __('submitOrderLabel') %>" onclick="calculateTotalCost(<%= restaurant.Delivery %>, <%= JSON.stringify(restaurant) %>)">
 
         </form>
         <script src="/js/order.js"></script>

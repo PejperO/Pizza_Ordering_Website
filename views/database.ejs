@@ -4,55 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Baza danych</title>
+    <title><%= __('databaseTitle') %></title>
 </head>
 <body>
 
 <div class="container">
-    <div id="language-switch">
-        <a href="main_ang.html"> <!-- Zmiana -->
-            <img src="/images/ang.png" alt="Change language to English">
-        </a>
-    </div>
+  <div id="language-switch">
+      <a href="?lang=pl"><img src="/images/pl.png" alt="Zmień język na polski"></a>
+      <a href="?lang=en"><img src="/images/en.png" alt="Change language to English"></a>
+  </div>
 
     <div id="sort-search-options">
         <form id="search-form">
-            <label for="sort-column">Sortuj według kolumny:</label>
+            <label for="sort-column"><%= __('sortByColumnLabel') %>:</label>
             <select id="sort-column" name="sortColumn">
-                <option value="ID">ID</option>
-                <option value="Name">Imię</option>
-                <option value="Last_Name">Nazwisko</option>
-                <option value="Phone_number">Nr. Telefonu</option>
-                <option value="Address">Adres</option>
-                <option value="Login">Email</option>
+                <option value="ID"><%= __('idColumnLabel') %></option>
+                <option value="Name"><%= __('firstNameColumnLabel') %></option>
+                <option value="Last_Name"><%= __('lastNameColumnLabel') %></option>
+                <option value="Phone_number"><%= __('phoneNumberColumnLabel') %></option>
+                <option value="Address"><%= __('addressColumnLabel') %></option>
+                <option value="Login"><%= __('emailColumnLabel') %></option>
             </select>
 
-            <label for="sort-order">Kolejność sortowania:</label>
+            <label for="sort-order"><%= __('sortOrderLabel') %>:</label>
             <select id="sort-order" name="sortOrder">
-                <option value="asc">Rosnąco</option>
-                <option value="desc">Malejąco</option>
+                <option value="asc"><%= __('ascendingLabel') %></option>
+                <option value="desc"><%= __('descendingLabel') %></option>
             </select>
 
-            <label for="search-input">Wyszukaj:</label>
-            <input type="text" id="search-input" name="searchInput" placeholder="Wyszukaj...">
+            <label for="search-input"><%= __('searchLabel') %>:</label>
+            <input type="text" id="search-input" name="searchInput" placeholder="<%= __('searchPlaceholder') %>">
 
-            <button type="submit">Szukaj</button>
+            <button type="submit"><%= __('searchButtonLabel') %></button>
         </form>
     </div>
 
-    <h2>Baza Danych</h2>
+    <h2><%= __('databaseTitle') %></h2>
 
     <div id="database-content">
         <table>
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Nr. Telefonu</th>
-                <th>Adres</th>
-                <th>Email</th>
-                <th>Akcje</th>
+                <th><%= __('idColumnLabel') %></th>
+                <th><%= __('firstNameColumnLabel') %></th>
+                <th><%= __('lastNameColumnLabel') %></th>
+                <th><%= __('phoneNumberColumnLabel') %></th>
+                <th><%= __('addressColumnLabel') %></th>
+                <th><%= __('emailColumnLabel') %></th>
+                <th><%= __('actionsColumnLabel') %></th>
             </tr>
             </thead>
             <tbody>
@@ -66,13 +65,13 @@
                     <td><%= users[i].Login %></td>
                     <td>
                         <a href="/detailsUser/<%= users[i].ID %>">
-                            <button>Dokładne Dane</button>
+                            <button><%= __('detailsButtonLabel') %></button>
                         </a>
                         <a href="/editUser/<%= users[i].ID %>">
-                            <button>Edytuj</button>
+                            <button><%= __('editButtonLabel') %></button>
                         </a>
                         <form method="POST" action="<%= deleteEndpoint + users[i].ID %>?_method=DELETE">
-                            <button type="submit">Usuń</button>
+                            <button type="submit"><%= __('deleteButtonLabel') %></button>
                         </form>
                     </td>
                 </tr>

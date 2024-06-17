@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Strona Główna</title>
+    <title><%= __('homePageTitle') %></title>
 </head>
 <body>
 
 <div class="container">
-    <div id="language-switch">
-        <a href="main_ang.html"> <!-- Zmiana -->
-            <img src="/images/ang.png" alt="Change language to English">
-        </a>
-    </div>
+  <div id="language-switch">
+      <a href="?lang=pl"><img src="/images/pl.png" alt="Zmień język na polski"></a>
+      <a href="?lang=en"><img src="/images/en.png" alt="Change language to English"></a>
+  </div>
     <div>
         <br>
         <br>
@@ -21,42 +20,48 @@
         <br>
     </div>
 
-    <div id="user-info">
+    <!-- <div id="user-info">
         <h2>Informacje o użytkowniku</h2>
         <p><strong>Imię:</strong></p>
-        <p>Jan Kowalski</p>
+        <p> - </p>
         <p><strong>Ulica:</strong></p>
-        <p>Koszyklowa 6/9</p>
-        <p>00-669 Warszawa</p>
-        <p><strong>Ostatnie zamówienie:</strong></p>
-        <!-- dodac dynamiczne dane -->
+        <p> - </p>
+        <p> - </p>
+        <p><strong> - </strong></p>
+        dodac dynamiczne dane !!!
+    </div> -->
+
+    <div id="user-info">
+        <h2><%= __('notLoggedIn') %></h2>
+        <p><%= __('haveAccount') %> <a href="/login"><%= __('login') %></a></p>
+        <p><%= __('noAccount') %> <a href="/register"><%= __('register') %></a></p>
     </div>
 
     <div id="restaurants-list">
-        <h2>Lista Restauracji</h2>
+        <h2><%= __('restaurantListTitle') %></h2>
 
         <% for (let i = 0; i < restaurants.length; i++) { %>
             <div class="restaurant">
                 <img src="/images/<%= restaurants[i].Image %>" alt="Local Image">
 
-                    <div class="restaurant-info">
-                        <a href="/order/<%= restaurants[i].ID %>">
+                <div class="restaurant-info">
+                    <a href="/order/<%= restaurants[i].ID %>">
                         <h3><%= restaurants[i].Name %></h3>
-                        </a>
-                        <p><strong>Ocena:</strong> <%= restaurants[i].Rate %></p>
-                        <p><strong>Adres:</strong> <%= restaurants[i].Adres %></p>
-                        <p><strong>Koszt dostawy:</strong> <%= restaurants[i].Delivery %> zł</p>
-                    </div>
-
+                    </a>
+                    <p><strong><%= __('ratingLabel') %>:</strong> <%= restaurants[i].Rate %></p>
+                    <p><strong><%= __('addressLabel') %>:</strong> <%= restaurants[i].Adres %></p>
+                    <p><strong><%= __('deliveryCostLabel') %>:</strong> <%= restaurants[i].Delivery %> zł</p>
+                </div>
             </div>
         <% } %>
 
     </div>
 
     <div id="admin-panel">
-        <h2>Panel Administratora</h2>
+        <h6>miał być tylko dla admina ale logowanie nie chce mi działać :<</h6>
+        <h2><%= __('adminPanelTitle') %></h2>
         <ul>
-            <a href="/database">Baza danych</a>
+            <a href="/database"><%= __('database') %></a>
         </ul>
     </div>
 

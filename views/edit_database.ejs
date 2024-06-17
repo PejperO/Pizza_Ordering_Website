@@ -4,33 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
-    <title>Edytuj bazę danych</title>
+    <title><%= __('editDatabaseTitle') %></title>
 </head>
 <body>
 
 <div class="container">
-    <div id="language-switch">
-        <a href="main_ang.html"> <!-- Zmiana -->
-            <img src="/images/ang.png" alt="Change language to English">
-        </a>
-    </div>
+  <div id="language-switch">
+      <a href="?lang=pl"><img src="/images/pl.png" alt="Zmień język na polski"></a>
+      <a href="?lang=en"><img src="/images/en.png" alt="Change language to English"></a>
+  </div>
 
     <div id="edit-form">
-        <h2>Edytuj bazę danych</h2>
+        <h2><%= __('editDatabaseTitle') %></h2>
         <form action="/editUser/<%= user.ID %>" method="post">
-            <label for="first-name">Imię:</label>
+            <label for="first-name"><%= __('firstNameLabel') %>:</label>
             <input type="text" id="first-name" name="firstName" value="<%= user.Name %>" required>
 
-            <label for="last-name">Nazwisko:</label>
+            <label for="last-name"><%= __('lastNameLabel') %>:</label>
             <input type="text" id="last-name" name="lastName" value="<%= user.Last_Name %>" required>
 
-            <label for="email">Email:</label>
+            <label for="email"><%= __('emailLabel') %>:</label>
             <input type="text" id="email" name="email" value="<%= user.Login %>" required>
 
-            <label for="street">Adres:</label>
+            <label for="street"><%= __('streetLabel') %>:</label>
             <input type="text" id="street" name="street" value="<%= user.Address %>" required>
 
-            <input type="submit" value="Zapisz">
+            <input type="submit" value="<%= __('saveButton') %>">
         </form>
     </div>
 </div>
