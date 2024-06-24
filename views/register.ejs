@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title><%= __('registerTitle') %></title>
+</head>
+<body>
+
+    <div class="container">
+        <div id="language-switch">
+            <a href="?lang=pl"><img src="/images/pl.png" alt="Zmień język na polski"></a>
+            <a href="?lang=en"><img src="/images/en.png" alt="Change language to English"></a>
+        </div>
+
+        <img id="pizza-image" src="/images/pizza.png" alt="Pizza Image">
+
+        <div id="login-form">
+            <h2><%= __('registerTitle') %></h2>
+            <% if (typeof error !== 'undefined') { %>
+                <p style="color: red;"><%= error %></p>
+            <% } %>
+            <form action="/register" method="post">
+                <label for="firstName"><%= __('firstNameLabel') %></label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName"><%= __('lastNameLabel') %></label>
+                <input type="text" id="lastName" name="lastName" required>
+
+                <label for="email"><%= __('emailLabel') %></label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password"><%= __('passwordLabel') %></label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="phoneNumber"><%= __('phoneLabel') %></label>
+                <input type="text" id="phoneNumber" name="phoneNumber" required>
+
+                <label for="address"><%= __('addressLabel') %></label>
+                <input type="text" id="address" name="address" required>
+
+                <input type="submit" value="<%= __('registerButton') %>">
+            </form>
+            <p><%= __('loginLink') %></p>
+        </div>
+    </div>
+
+</body>
+</html>
